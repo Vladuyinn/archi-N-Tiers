@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+package todo;
+
+// DÃ©finition du service
+service TodoService {
+  rpc AddTask (Task) returns (AddTaskResponse);
+  rpc GetTasks (Empty) returns (TaskList);
+  rpc GetWeather (WeatherRequest) returns (WeatherResponse);
+  rpc AddProduct (Product) returns (ProductResponse);
+  rpc UpdateProduct (UpdateProductRequest) returns (ProductResponse);
+  rpc DeleteProduct (DeleteProductRequest) returns (ProductResponse);
+  rpc ListProducts (Empty) returns (ProductList);
+}
+
+// Messages
+message Empty {}
+
+message Task {
+  string id = 1;
+  string description = 2;
+}
+
+message AddTaskResponse {
+  string message = 1;
+}
+
+message TaskList {
+  repeated Task tasks = 1;
+}
+
+message WeatherRequest {
+  string city = 1;
+}
+
+message WeatherResponse {
+  string description = 1;
+  float temperature = 2;
+}
+
+message Product {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  double price = 4;
+}
+
+message ProductResponse {
+  string message = 1;
+}
+
+message ProductList {
+  repeated Product products = 1;
+}
+
+message UpdateProductRequest {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  double price = 4;
+}
+
+message DeleteProductRequest {
+  string id = 1;
+}
