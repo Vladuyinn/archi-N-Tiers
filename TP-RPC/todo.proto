@@ -11,6 +11,7 @@ service TodoService {
   rpc UpdateProduct (UpdateProductRequest) returns (ProductResponse);
   rpc DeleteProduct (DeleteProductRequest) returns (ProductResponse);
   rpc ListProducts (Empty) returns (ProductList);
+  rpc getProduct (ProductRequest) returns (Product);
 }
 
 // Messages
@@ -62,4 +63,8 @@ message UpdateProductRequest {
 
 message DeleteProductRequest {
   string id = 1;
+}
+
+message ProductRequest {
+  string id = 1; // ID du produit
 }
